@@ -1,7 +1,7 @@
 
 import os
 import sys
-from setuptools import setup, find_packages
+from setuptools import setup
 
 def readme():
   if os.path.isfile('README.md') and any('dist' in x for x in sys.argv[1:]):
@@ -27,5 +27,5 @@ setup(
   url='https://github.com/NiklasRosenstein/py-invoke',
   author='Niklas Rosenstein',
   author_email='rosensteinniklas@gmail.com',
-  packages=find_packages()
+  py_modules=['pyinvoke']
 )
