@@ -21,7 +21,7 @@ def readme():
 
 setup(
   name='pyinvoke',
-  version='1.0.0',
+  version='1.0.1',
   license='MIT',
   long_description=readme(),
   url='https://github.com/NiklasRosenstein/py-invoke',
