@@ -20,21 +20,37 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
+from __future__ import print_function
+
+__author__ = 'Niklas Rosenstein <rosensteinniklas@gmail.com>'
+__version__ = '1.0.2'
+
 import argparse
 import sys
 
 
 def main(argv=None, prog=None):
-  parser = argparse.ArgumentParser(prog=prog)
-  parser.add_argument('spec', help='The Python function to call in the form '
-    'of <module>:<function>.')
-  args = parser.parse_args(argv)
+  if argv is None:
+    argv = sys.argv[1:]
+  if prog is None:
+    prog = 'pyinvoke'
 
-  module, function = args.spec.partition(':')[::2]
+  if not argv:
+    print('usage: {} --version | <module:function> [args...]'.format(prog))
+    return sys.exit(0)
+
+  if argv[0] == '--version':
+    print('pyinvoke', __version__)
+    sys.exit(0)
+
+  module, function = argv[0].partition(':')[::2]
   if not module or not function:
-    parser.error('invalid spec: {!r}'.format(args.spec))
+    print('fatal: invalid spec {!r}'.format(argv[0]))
+    sys.exit(1)
+
+  sys.argv = argv
   sys.exit(getattr(__import__(module, fromlist=[None]), function)())
 
 
 if __name__ == '__main__':
-  main()
+  sys.exit(main())

@@ -1,9 +1,13 @@
 # pyinvoke
 
-Pyinvoke is a very simple module that is intended to make invoking Python
-applications in modules less pain. Since Python's `-m` option will load the
-module as `__main__` module and not as the module it is intended to be loaded
-as, you can get interesting errors.
+`pyinvoke` is a simple module that is used to invoked Python applications
+using a full function specifier, similar to distlib entrypoints.
+
+The key advantage is that the Python application you want to run will be
+loaded as its proper module instead of as the `__main__` module. `pyinvoke`
+will be the `__main__` module for this operation.
+
+One of the motivating cases where `pyinvoke` comes in handy is the following:
 
     $ python -m module.main
     Traceback (most recent call last):
@@ -11,7 +15,10 @@ as, you can get interesting errors.
         from .stuff import ham
     SystemError: Parent module '' not loaded, cannot perform relative import
 
-Well, shucks! Works as expected with pyinvoke!
+To run the application with `pyinvoke`:
 
-    $ pip3 install pyinvoke
-    $ python3 -m pyinvoke module:main
+    $ python3 -m pyinvoke module.main:main
+
+---
+
+<p align="center">Copyright &copy; 2018 Niklas Rosenstein</p>
