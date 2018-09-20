@@ -7,7 +7,7 @@ with io.open('README.md', encoding='utf8') as fp:
 
 setuptools.setup(
   name = 'pyinvoke',
-  version = '1.0.2',
+  version = '1.0.3',
   license = 'MIT',
   long_description = readme,
   long_description_content_type = 'text/markdown',

@@ -23,7 +23,7 @@
 from __future__ import print_function
 
 __author__ = 'Niklas Rosenstein <rosensteinniklas@gmail.com>'
-__version__ = '1.0.2'
+__version__ = '1.0.3'
 
 import argparse
 import sys
@@ -47,7 +47,7 @@ def main(argv=None, prog=None):
   if not module or not function:
     print('fatal: invalid spec {!r}'.format(argv[0]))
     sys.exit(1)
-
+gi
   sys.__argv__ = sys.argv[:]
   sys.argv = argv
   sys.exit(getattr(__import__(module, fromlist=[None]), function)())
