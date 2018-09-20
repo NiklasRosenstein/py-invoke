@@ -19,6 +19,13 @@ To run the application with `pyinvoke`:
 
     $ python3 -m pyinvoke module.main:main
 
+Applications that depend on restarting can read the original commandline
+from `sys.__argv__`:
+
+```python
+argv = getattr(sys, '__argv__', sys.argv)
+```
+
 ---
 
 <p align="center">Copyright &copy; 2018 Niklas Rosenstein</p>

@@ -48,6 +48,7 @@ def main(argv=None, prog=None):
     print('fatal: invalid spec {!r}'.format(argv[0]))
     sys.exit(1)
 
+  sys.__argv__ = sys.argv[:]
   sys.argv = argv
   sys.exit(getattr(__import__(module, fromlist=[None]), function)())
 
